@@ -1,0 +1,87 @@
+﻿<Window x:Class="STS_ESP.Windows.ModifyBalance"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:STS_ESP.Windows"
+      mc:Ignorable="d"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      MinHeight="500" MinWidth="800"
+      Title="Modifier la balance d'un usager">
+
+    <Grid Background="WhiteSmoke">
+        <Border BorderThickness="1" BorderBrush="Gray" Margin="75" >
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+
+                </Grid.Resources>
+                <Label Content="Modifier la balance d'un usager" Grid.Row="0" FontFamily="./#Roboto Regular" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"/>
+                
+                <Label Content="Effectuez les changements sur la balance..." Grid.Row="1" FontFamily="./#Roboto Regular" FontSize="12" HorizontalAlignment="Center"/>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Balance actuelle :" Grid.Column="0"  HorizontalAlignment="Right" FontFamily="./Fonts/#Roboto Regular" FontSize="16" VerticalAlignment="Center"/>
+                    <!-- Champ Balance Actuelle -->
+                    <TextBox Text="{Binding BalanceActuel}" Grid.Column="1" FontFamily="./Fonts/#Roboto Regular" FontSize="16" VerticalAlignment="Center" Margin="0,0,150,0" IsReadOnly="True"/>
+
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Nouvelle balance :" Grid.Column="0"  HorizontalAlignment="Right" FontFamily="./Fonts/#Roboto Regular" FontSize="16" VerticalAlignment="Center"/>
+                    <!-- Champ Nouvelle balance -->
+                    <TextBox Text="{Binding BalanceNew}" Grid.Column="1" FontFamily="./Fonts/#Roboto Regular" FontSize="16" VerticalAlignment="Center" Margin="0,0,150,0" Cursor="IBeam" materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                </Grid>
+
+
+
+
+
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Bouton Modifier-->
+                    <Button Grid.Column="0" Margin="50,0,50,0" Command="{Binding Button_Modifier_Click}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="AccountAdd"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Modifier</Label>
+                        </StackPanel>
+                    </Button>
+                    <!-- Bouton Retour -->
+                    <Button Grid.Column="1" Margin="50,0,50,0" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="ArrowBack"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Retour</Label>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Label Grid.Row="8" FontFamily="./Fonts/#Roboto Regular" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#DDF70000" Content="{Binding State}"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

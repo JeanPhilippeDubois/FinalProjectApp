@@ -1,0 +1,76 @@
+﻿<Window x:Class="STS_ESP.Windows.AddUsager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:STS_ESP.Windows"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      MinHeight="500" MinWidth="1000"
+      Title="Ajouter un usager">
+
+    <Grid Background="WhiteSmoke">
+        <Border BorderThickness="1" BorderBrush="Gray" Margin="75" >
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+
+                </Grid.Resources>
+                <Label Content="Ajoutez un usager" Grid.Row="0" FontFamily="./#Roboto Regular" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                <Label Content="Entrez les informations du nouveau usager que vous voullez créer ..." Grid.Row="1" FontFamily="./#Roboto Regular" FontSize="12" HorizontalAlignment="Center"/>
+                <!-- Champ NomComplet -->
+                <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Nom complet" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam" Margin="25,0,25,0" Text="{Binding NomComplet}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                <!-- Champ NoTelephone -->
+                <TextBox Grid.Row="3" materialDesign:HintAssist.Hint="Numéro de téléphone" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam"  Margin="25,0,25,0" Text="{Binding NoTelephone}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                <!-- Champ Courriel -->
+                <TextBox Grid.Row="4" materialDesign:HintAssist.Hint="Addresse Couriel" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam"   Margin="25,0,25,0" Text="{Binding Courriel}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                <!-- ComboBox TypeAbonnement -->
+                <ComboBox Grid.Column="3" Grid.Row="5" materialDesign:HintAssist.IsFloating="true" materialDesign:HintAssist.Hint="Abonnement" Margin="25,0,25,0" SelectedIndex="0" SelectedItem="{Binding TypeAbonnement}" >
+                    <ComboBoxItem Content="Aucun"/>
+                    <ComboBoxItem Content="Journalier"/>
+                    <ComboBoxItem Content="Hebdomadaire"/>
+                    <ComboBoxItem Content="Bihebdomadaire"/>
+                    <ComboBoxItem Content="Mensuel"/>
+                    <ComboBoxItem Content="Trimestriel"/>
+                    <ComboBoxItem Content="Annuel"/>
+                </ComboBox>
+
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Bouton Ajouter -->
+                    <Button Grid.Column="0" Margin="50,0,50,0" Command="{Binding Button_AddUsager_Click}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="AccountAdd"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Ajouter</Label>
+                        </StackPanel>
+                    </Button>
+                    <!-- Bouton Retour -->
+                    <Button Grid.Column="1" Margin="50,0,50,0" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="ArrowBack"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Retour</Label>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Label Grid.Row="10" FontFamily="./Fonts/#Roboto Regular" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#DDF70000" Content="{Binding State}"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+

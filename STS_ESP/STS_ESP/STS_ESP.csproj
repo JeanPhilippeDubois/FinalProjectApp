@@ -1,0 +1,54 @@
+﻿
+		<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>Jean-Philippe Dubois</Authors>
+    <Product>STS_App</Product>
+    <ApplicationIcon>index.ico</ApplicationIcon>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="Menu\**" />
+    <EmbeddedResource Remove="Menu\**" />
+    <None Remove="Menu\**" />
+    <Page Remove="Menu\**" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Ressource Include="Fonts\Roboto-Regular.ttf" />
+		<Ressource Include="Fonts\Roboto-Bold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <Content Include="Assets\STSLogo.svg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\Roboto-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

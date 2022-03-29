@@ -1,0 +1,46 @@
+﻿<Window x:Class="STS_ESP.LoggingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:STS_ESP"
+        mc:Ignorable="d"
+        Title="Page de connexion" Height="450" Width="400"  MinHeight="450" MinWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#2199e8" Grid.Row="0"></Rectangle>
+        <Rectangle Fill="#147cc0" Grid.Row="1"></Rectangle>
+        <Grid Grid.RowSpan="2" Margin="25">
+            <Border BorderBrush="Black" BorderThickness="1.5" Background="#fefefe" CornerRadius="25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+
+                        <RowDefinition Height="1*"/>
+
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="Assets/STSLogo.svg.png" Margin="15"></Image>
+                    <!-- Champ Username -->
+                    <TextBox Grid.Row="2" CaretBrush="#FF2199E8" materialDesign:HintAssist.Hint="Nom d'utilisateur" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam" Text="{Binding AccountName}" Margin="50,0,50,0" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                    <!-- Champ MDP -->
+                    <PasswordBox Grid.Row="4" materialDesign:HintAssist.Hint="Mot de Passe" materialDesign:HintAssist.IsFloating="True"  materialDesign:TextFieldAssist.HasClearButton="True" Cursor="IBeam" CaretBrush="#FF2199E8" PasswordChanged="PasswordBox_PasswordChanged" Margin="50,0,50,0"></PasswordBox>
+                    <!-- Bouton Se connecter -->
+                    <Button Grid.Row="7"   Content="Se connecter" Background="Blue" Margin="50,0,50,0" Command="{Binding Button_Login_Click}"/>
+                    <!-- Indicateur erreur -->
+                    <Label Grid.Row="5" Foreground="Red" FontWeight="Bold" FontFamily="./#Roboto Regular" FontSize="14" HorizontalAlignment="Center" Content="{Binding State}"/>
+
+                </Grid> 
+               
+            </Border>
+        </Grid> 
+    </Grid>
+</Window>

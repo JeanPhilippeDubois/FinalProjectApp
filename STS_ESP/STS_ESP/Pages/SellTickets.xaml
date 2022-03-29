@@ -1,0 +1,68 @@
+﻿<Page x:Class="STS_ESP.Pages.SellTickets"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:STS_ESP.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="Vendre un billet">
+    <Grid Background="WhiteSmoke">
+        <Border BorderThickness="1" BorderBrush="Gray" Margin="75" >
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+
+                </Grid.Resources>
+                <Label Content="Vente de Billets" Grid.Row="0" FontFamily="./Fonts/#Roboto Regular" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="Cette page permet de vendre des billets à un usager qui n'a pas de carte." Grid.Row="1" FontFamily="./Fonts/#Roboto Regular" FontSize="12" HorizontalAlignment="Center" />
+                <Label Content="Afin de vendre des titres de passage à un usager avec une carte, utilisez la page de gestion d'usagers." Grid.Row="2" FontFamily="./Fonts/#Roboto Regular" FontSize="12" HorizontalAlignment="Center" />
+
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Choix du billet(s) :" Grid.Column="0"  HorizontalAlignment="Right" FontFamily="./Fonts/#Roboto Regular" FontSize="16" VerticalAlignment="Center"/>
+                    <!--ComboxBox Choix billets  -->
+                    <ComboBox Grid.Column="1" Grid.Row="5" materialDesign:HintAssist.IsFloating="true" materialDesign:HintAssist.Hint="Choix billet"  SelectedIndex="0" FontSize="16" SelectedItem="{Binding ChoixBillet}">
+                        <ComboBoxItem Content="Unité - 3.35 $"/>
+                        <ComboBoxItem Content="Livret de 5 billets - 16,75 $"/>
+                        <ComboBoxItem Content="Livret de 12 billets - 40,20 $"/>
+                    </ComboBox>
+                </Grid>
+
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Bouton Vendre  -->
+                    <Button Grid.Column="1" Margin="150,0,150,0" Background="Green" BorderBrush="ForestGreen" Command="{Binding Button_VenteBillet_Click}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="AttachMoney"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Vendre</Label>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
+                <Label Grid.Row="9" FontFamily="./Fonts/#Roboto Regular" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#DDF70000" Content="{Binding State}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

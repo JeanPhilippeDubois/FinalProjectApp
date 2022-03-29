@@ -1,0 +1,66 @@
+﻿<Window x:Class="STS_ESP.Windows.ModifyUsager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:STS_ESP.Windows"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      MinHeight="450" MinWidth="800"
+      Title="Modifier un usager">
+
+    <Grid Background="WhiteSmoke">
+        <Border BorderThickness="1" BorderBrush="Gray" Margin="75" >
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.Resources>
+
+                </Grid.Resources>
+                
+                <Label Content="Modifier un usager" Grid.Row="0" FontFamily="./#Roboto Regular" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold"/>
+                
+                <Label Content="Modifiez les informations de l'usager ..." Grid.Row="1" FontFamily="./#Roboto Regular" FontSize="12" HorizontalAlignment="Center"/>
+                <!-- Champ Nomcomplet -->
+                <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Nom complet" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam" Margin="25,0,25,0" Text="{Binding NomComplet}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                <!-- Champ NomComplet -->
+                <TextBox Grid.Row="3" materialDesign:HintAssist.Hint="Numéro de téléphone" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam"  Margin="25,0,25,0" Text="{Binding NoTelephone}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+                <!-- Champ Courriel-->
+                <TextBox Grid.Row="4" materialDesign:HintAssist.Hint="Addresse Couriel" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam"   Margin="25,0,25,0" Text="{Binding Courriel}" materialDesign:TextFieldAssist.HasClearButton="True"/>
+
+                <Grid Grid.Row="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Champ ModifierUsager -->
+                    <Button Grid.Column="0" Margin="50,0,50,0" Command="{Binding Button_ModifierUsager_Click}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="AccountSync"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Modifier</Label>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Column="1" Margin="50,0,50,0" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Width="25" Height="25" Kind="ArrowBack"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Retour</Label>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <Label Grid.Row="9" FontFamily="./Fonts/#Roboto Regular" FontSize="10" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#DDF70000" Content="{Binding State}"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

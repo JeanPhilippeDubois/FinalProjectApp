@@ -1,0 +1,98 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:STS_ESP" xmlns:viewmodels="clr-namespace:STS_ESP.ViewModels" xmlns:Win32="clr-namespace:Microsoft.Win32;assembly=Microsoft.Win32.Registry" x:Class="STS_ESP.MenuWindow"
+
+        mc:Ignorable="d"
+        Title="Menu"  MinHeight="600" MinWidth="1400"
+        Height="600" Width="1400">
+
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MenuLeft" Width="275"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid HorizontalAlignment="Left" Background="#147cc0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.70*"/>
+                <RowDefinition Height="0.70*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Boutons interface -->
+            <Rectangle Grid.Row="0" Fill="#2199e8"/>
+            <Image Source="Assets/STSLogo.svg.png"   x:Name="Logo" Margin="15"/>
+
+            <Button x:Name="ButtonClose" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="ButtonClose_Click" >
+                <materialDesign:PackIcon Kind="Close" Foreground="Black" Width="15" Height="15"/>
+            </Button>
+
+            <Button x:Name="ButtonOpen" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Visibility="Hidden" Click="ButtonOpen_Click">
+                <materialDesign:PackIcon Kind="Menu" Foreground="Black" Width="15" Height="15"/>
+            </Button>
+            <!-- Bouton Gestion des Usagers-->
+            <Button Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0" HorizontalContentAlignment="Left" Command="{Binding Button_Usager_Click}">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="PeopleGroup" Height="25" Width="25"  Foreground="White" Padding="0,0,1,0" Margin="0,0,5,0"/>
+                    <TextBlock  x:Name="UsagerText" Text="Gestion des usagers" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"   FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+            <!-- Bouton Vente de Billet -->
+            <Button Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0" HorizontalContentAlignment="Left" Command="{Binding Button_Billet_Click}">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="Money" Height="25" Width="25"  Foreground="White" Padding="0,0,1,0" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="VenteBillet" Text="Vente de billet" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"  FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+
+            <!-- Bouton Gestion Employer -->
+            <Button Grid.Row="3" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0" HorizontalContentAlignment="Left" Command="{Binding Button_Employer_Click}" Visibility="{Binding Visibility}">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="People" Height="25" Width="25"  Foreground="White" Padding="0,0,1,0" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="GestionText" Text="Gestion des employés" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"  FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+
+            <!-- Bouton Rapport -->
+            <Button Grid.Row="4" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0"  Margin="0" HorizontalContentAlignment="Left" Command="{Binding Button_Rapport_Click}" Visibility="{Binding Visibility}">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="GoogleSpreadsheet" Height="25" Width="25"  Foreground="White" Padding="0,0,1,0" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RapportText" Text="Rapports" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"  FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+            <!-- Boutons Gestion Du Compte -->
+            <Button Grid.Row="6" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0" HorizontalContentAlignment="Left" Command="{Binding Button_Compte_Click}">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="AccountCog" Height="25" Width="25"  Foreground="White"  Margin="0,0,5,0"/>
+                    <TextBlock x:Name="GestionCompteText" Text="Gestion du compte" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"  FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+            <!-- Boutons Se deconnecter -->
+            <Button Grid.Row="7" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold"  Padding="0,0,0,0" HorizontalContentAlignment="Left" Cursor="Hand" Click="Button_Click">
+                <StackPanel Orientation="Horizontal"  Margin="10 0">
+                    <materialDesign:PackIcon Kind="AccountOff" Height="25" Width="25"   Margin="0,0,5,0" Foreground="Red"/>
+                    <TextBlock x:Name="DecoText" Text="Se déconnecter" FontFamily="./Fonts/#Roboto Regular" VerticalAlignment="Center"   FontWeight="Bold" FontSize="14" Foreground="White" Margin="5,0,0,0" />
+                </StackPanel>
+            </Button>
+
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden">
+
+            </Frame>
+        </Grid>
+    </Grid>
+</Window>

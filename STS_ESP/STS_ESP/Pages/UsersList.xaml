@@ -1,0 +1,114 @@
+﻿<Page x:Class="STS_ESP.Pages.UsersList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:STS_ESP.Pages" xmlns:viewmodels="clr-namespace:STS_ESP.ViewModels" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UsersList">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Liste des usagers" FontFamily="./Fonts/#Roboto Regular" FontSize="20"  Grid.Row="0" FontWeight="Bold"/>
+
+        <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="LightGray" >
+            <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+                <!-- Bouton Ajouter  -->
+                <Button Grid.Column="0" Margin="10,0,10,0" Command="{Binding Button_AjouterUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left"  Kind="AccountAdd"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Ajouter</Label>
+                    </StackPanel>
+                </Button>
+
+                <!-- Bouton Modifier  -->
+                <Button Grid.Column="1" Margin="10,0,10,0" Command="{Binding Button_ModifierUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left"  Kind="AccountCog"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Modifier</Label>
+                    </StackPanel>
+                </Button>
+                <!-- Bouton Supprimer  -->
+                <Button Grid.Column="2" Margin="10,0,10,0" Command="{Binding Button_SupprimerUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left"  Kind="AccountRemove"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Supprimer</Label>
+                    </StackPanel>
+                </Button>
+                <!-- Champ Recherche  -->
+                <TextBox Grid.Column="3" VerticalAlignment="Center" BorderBrush="Black" materialDesign:HintAssist.Hint="Recherche" materialDesign:HintAssist.IsFloating="True" Cursor="IBeam" Text="{Binding ChampRecherche, Mode='TwoWay'}"/>
+                <!-- Bouton Recehrche  -->
+                <Button Grid.Column="4" Margin="10,0,10,0" Command="{Binding Button_RechercheUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left"  Kind="Search"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Recherche</Label>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2" BorderThickness="0,1,0,1" BorderBrush="LightGray" >
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Bouton  ModifierAbo -->
+                <Button Grid.Column="0" Margin="10,0,10,0" Command="{Binding Button_ModifierAboUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left"  Kind="AccessTime"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Modifier Abonnemment</Label>
+                    </StackPanel>
+                </Button>
+                <!-- Bouton ModifierBalanace  -->
+                <Button Grid.Column="1" Margin="10,0,10,0" Command="{Binding Button_ModifierBalanceUser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Kind="Money"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Modifier Balance</Label>
+                    </StackPanel>
+                </Button>
+
+                <!-- Bouton Actualiser  -->
+                <Button Grid.Column="6" Margin="10,0,10,0" Command="{Binding Button_Actualiser_Click}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Left" Kind="Refresh"/>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White">Actualiser</Label>
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+        </Border>
+        <Border Grid.Row="4" Margin="25" BorderBrush="Gray" BorderThickness="1">
+            <ListView ItemsSource="{Binding ListeUsagers}" Grid.Row="2" SelectedItem="{Binding SelectUsagers}">
+            <ListView.View>
+                <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="No. Usager" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding NomComplet}" Header="Nom" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding EmailAddress}" Header="Courriel" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Carte.Abo.Type}" Header="Type Abonnement" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Carte.NoCarte}" Header="No.Carte" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Carte.Balance}" Header="Balance" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        </Border>
+    </Grid>
+</Page>
